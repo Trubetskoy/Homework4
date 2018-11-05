@@ -1,45 +1,82 @@
-let tamagochi = {
-    health: 100, //здоровье
-    happiness: 100, //счастье
-    satiety: 100, // сытость
-    cheerfulness: 100, //бодрость
-    thirst: 100, //жажда
-    playfulness: 100, // игривость
+function Tamagochi(name) {
+    this.name = name;
+    this.health = 100;
+    this.happiness = 100;
+    this.hunger = 100;
+    this.cheerfulness = 100;
+    this.playfulness = 100;
+    this.thirst = 100;
 
-    name: 'Dog',
-    wantToEat: function (satiety) {
-        if (satiety <= 50) {
-            alert('feed me')
-        }
-    },
-    death: function (health) {
-        if (health <= 0) {
-            alert('Dog died')
-        }
-    },
-    wantToDrink: function (thirst) {
-        if (thirst <= 50) {
-            alert('give me some water')
-        }
-    },
-    wantToPlay: function (playfulness) {
-        if (playfulness <= 50) {
-            alert('play with me')
-        }
-    },
+    this.FeedTamagochi = function () {
+        this.hunger += 5;
+        this.health -= 5;
+        this.thirst -= 5;
+        this.playfulness -= 5;
+        console.log(this.hunger);
+        console.log(this.health);
+        LiveOrNot();
+    };
 
-    wantToSleep: function (cheerfulness) {
-        if (cheerfulness <= 50) {
-            alert('I need rest')
-        }
-    },
+    this.HealMe = function () {
+        this.health += 10;
+        this.happiness -= 5;
+        console.log('health', this.health);
+        console.log('happiness', this.happiness);
+        LiveOrNot();
+    };
 
-    imSoHappy: function (happiness) {
-        if (happiness <= 50) {
-            alert('im so Happy!!!')
+    this.PlayWithMe = function () {
+        this.hunger -= 15;
+        this.health -= 5;
+        this.thirst -= 15;
+        this.playfulness += 15;
+        this.happiness += 15;
+        console.log(this.hunger);
+        LiveOrNot();
+    };
+
+    this.WhantToDrink = function () {
+        this.hunger -= 5;
+        this.health += 2;
+        this.thirst += 15;
+        this.playfulness += 15;
+        this.happiness += 15;
+        console.log(this.hunger);
+        LiveOrNot();
+    };
+
+    this.PlayWithMe = function () {
+        this.hunger -=15;
+        this.health -= 5;
+        this.thirst -=15;
+        this.playfulness += 15;
+        this.happiness += 15;
+        console.log(this.hunger);
+        LiveOrNot();
+    };
+
+    this.PlayWithMe = function () {
+        this.hunger -= 15;
+        this.health -= 5;
+        this.thirst -= 15;
+        this.playfulness += 15;
+        this.happiness += 15;
+        console.log(this.hunger);
+        LiveOrNot();
+    };
+    LiveOrNot = LiveOrNot.bind(this);
+
+    function LiveOrNot() {
+        console.log('health', this.health);
+        if (this.health <= 0 || this.happiness <= 0 || this.hunger <= 0 || this.cheerfulness <= 0 || this.playfulness <= 0 || this.thirst <= 0) {
+            console.log('Game Over')
         }
     }
+}
 
-    }
+var Game = new Tamagochi('Ivan');
 
+Game.FeedTamagochi();
+Game.HealMe();
+Game.PlayWithMe();
 
