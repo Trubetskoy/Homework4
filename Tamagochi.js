@@ -83,9 +83,19 @@ function Tamagochi(name) {
         console.log(name, 'thirst', this.thirst);
     }
 
+   /* WhantToEat = WhantToEat.bind(this);
+
+    function WhantToEat() {
+        setInterval(function () {
+            this.hunger -= 3;
+            if (this.hunger <= 0) {
+                clearInterval();
+            }, 500);
+        }
+    }*/
 }
 
-var Game = new Tamagochi('Inna');
+var Game = new Tamagochi('Vasya');
 
 //Game.FeedTamagochi();
 //Game.HealMe();
