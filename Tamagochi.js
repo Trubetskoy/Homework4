@@ -1,5 +1,4 @@
 function Tamagochi(name) {
-    this.name = name;
     this.health = 100;
     this.happiness = 100;
     this.hunger = 100;
@@ -83,16 +82,16 @@ function Tamagochi(name) {
         console.log(name, 'thirst', this.thirst);
     }
 
-   /* WhantToEat = WhantToEat.bind(this);
+    /* WhantToEat = WhantToEat.bind(this);
 
-    function WhantToEat() {
-        setInterval(function () {
-            this.hunger -= 3;
-            if (this.hunger <= 0) {
-                clearInterval();
-            }, 500);
-        }
-    }*/
+     function WhantToEat() {
+         setInterval(function () {
+             this.hunger -= 3;
+             if (this.hunger <= 0) {
+                 clearInterval();
+             }, 500);
+         }
+     }*/
 }
 
 var Game = new Tamagochi('Vasya');
@@ -104,15 +103,5 @@ var Game = new Tamagochi('Vasya');
 //Game.MakeMeHappier ();
 //Game.WhantToSleep ();
 
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-Game.FeedTamagochi();
-
+Game.MakeMeHappier ();
 
