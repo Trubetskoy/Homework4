@@ -6,16 +6,11 @@ Array.prototype.myForEach = function (func) {
     }
 };
 
-[5, 6, 5, 2, 4, 7, 'sdfg',].myForEach(function (item, i, arr) {
-
-});
-
 Array.prototype.myMap = function (func) {
-    array = this;
-    let NewArray;
-    for (let i = 0; i < this.length; i++) {
-        let value = this[i];
-        NewArray[i] = func(value, i, this)
+    let array = Object.assign([], this);
+    for (let i = 0; i < array.length; i++) {
+        let item = array[i];
+        array[i] = func(item, i, array)
     }
     return array
 };
@@ -24,6 +19,7 @@ console.log([65, 8, 2, 4, 1, 7, 456, 852, 'sdrthk'].myMap(function (item) {
     item *= 2;
     return item
 }));
+
 
 Array.prototype.mySort = function (func) {
     array = this;
@@ -41,6 +37,20 @@ Array.prototype.mySort = function (func) {
     return array;
 };
 
-console.log([65, 8, 2, 4, 1, 7, 456, 852, 'sdrthk'].mySort(function (item) {}));
+console.log([65, 8, 2, 4, 1, 7, 456, 852, 'sdrthk'].mySort(function (item) {
+}));
 
-Array.prototype.myFilter = function
+Array.prototype.myFilter = function (func) {
+    let array = [];
+    for (let i = 0; i < this.length; i++) {
+        if (func(this[i], i, this)) {
+            array.push(this[i])
+        }
+    }
+    return array
+};
+console.log([65, 8, 2, 4, 1, 7, 456, 852, 'sdrthk'].myFilter(function (item) {
+    if (item > 8) {
+        return true
+    }
+}));

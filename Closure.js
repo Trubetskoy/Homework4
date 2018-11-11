@@ -8,22 +8,23 @@ function Persons() {
     this.getPrivetSecondName = function () {
         return SecondPerson
     };
-    ChangeFirstPersonName = ChangeFirstPersonName.bind(this);
 
-    function ChangeFirstPersonName() {
-        this.FirstPerson = 'Artem'
+    this.secChangeName = function (password, newName) {
+        if (password === 2) {
+            ChangeFirstPersonName(newName)
+        }
     };
 
-    ChangeSecondPersonName = ChangeSecondPersonName.bind(this);
-
-    function ChangeSecondPersonName() {
-        this.SecondPerson = 'Sofiya'
-    };
+    function ChangeFirstPersonName(newName) {
+        FirstPerson = newName
+    }
 }
 
 let person = new Persons();
 console.log(person.getPrivetFirstName());
 console.log(person.getPrivetSecondName());
 
-person.ChangeFirstPersonName();
+person.secChangeName(2, 'Buba');
+
+console.log(person.getPrivetFirstName());
 
