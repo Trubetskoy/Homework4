@@ -1,20 +1,29 @@
-
-function Persons () {
-    let firstPerson = 'Dima';
+function Persons() {
+    let FirstPerson = 'Dima';
     let SecondPerson = 'Inna';
 
-    function ChangePersonsId() {
-    firstPerson = NewFirstPerson
-    }
-    this.getPrivetFirstName = function() {
-        return firstPerson
+    this.getPrivetFirstName = function () {
+        return FirstPerson
     };
-    this.ChangePersonsId2= function () {
-        SecondPerson = NewSecondPerson
-    }
-};
+    this.getPrivetSecondName = function () {
+        return SecondPerson
+    };
+    ChangeFirstPersonName = ChangeFirstPersonName.bind(this);
 
-let person = new Persons ();
+    function ChangeFirstPersonName() {
+        this.FirstPerson = 'Artem'
+    };
+
+    ChangeSecondPersonName = ChangeSecondPersonName.bind(this);
+
+    function ChangeSecondPersonName() {
+        this.SecondPerson = 'Sofiya'
+    };
+}
+
+let person = new Persons();
 console.log(person.getPrivetFirstName());
+console.log(person.getPrivetSecondName());
 
+person.ChangeFirstPersonName();
 
