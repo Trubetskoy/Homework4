@@ -1,10 +1,16 @@
 function Tamagochi(name) {
+    let thisObject = this;
     this.health = 100;
     this.happiness = 100;
     this.hunger = 100;
     this.cheerfulness = 100;
     this.playfulness = 100;
     this.thirst = 100;
+
+    let interval = setInterval(function whantToEat() {
+        thisObject.hunger -= 3;
+        LiveOrNot()
+    }, 300)
 
     this.FeedTamagochi = function () {
         this.hunger += 5;
@@ -65,6 +71,7 @@ function Tamagochi(name) {
 
     function LiveOrNot() {
         if (this.health <= 0 || this.happiness <= 0 || this.hunger <= 0 || this.cheerfulness <= 0 || this.playfulness <= 0 || this.thirst <= 0) {
+            clearInterval(interval)
             console.log('Game Over')
         } else if (this.health >= 150 || this.happiness >= 150 || this.hunger >= 150 || this.cheerfulness >= 150 || this.playfulness >= 150 || this.thirst >= 150) {
             console.log('He run away')
@@ -81,17 +88,6 @@ function Tamagochi(name) {
         console.log(name, 'playfulness', this.playfulness);
         console.log(name, 'thirst', this.thirst);
     }
-
-    /* WhantToEat = WhantToEat.bind(this);
-
-     function WhantToEat() {
-         setInterval(function () {
-             this.hunger -= 3;
-             if (this.hunger <= 0) {
-                 clearInterval();
-             }, 500);
-         }
-     }*/
 }
 
 var Game = new Tamagochi('Vasya');
@@ -103,5 +99,7 @@ var Game = new Tamagochi('Vasya');
 //Game.MakeMeHappier ();
 //Game.WhantToSleep ();
 
-Game.MakeMeHappier ();
+Game.MakeMeHappier();
+
+
 
