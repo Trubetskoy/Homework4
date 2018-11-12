@@ -1,8 +1,8 @@
 function MatrixCoordinats(r, c, r0, c0) {
-    this.arrayRow = [];
-    this.arrayColomn = [];
-    this.Rezults = [];
-    this.steps = Math.max(r,c)-1;
+    let arrayRow = [];
+    let arrayColomn = [];
+    let Rezults = [];
+    let steps = Math.max(r,c)-1;
     console.log(steps);
 
     Rezults.push([r0, c0]);
