@@ -1,29 +1,46 @@
 function MatrixCoordinats(r, c, r0, c0) {
-    let arrayRow = [];
-    let arrayColomn = [];
     let Rezults = [];
-    let steps = Math.max(r,c)-1;
-    console.log(steps);
+    let steps = Math.max(r, c) + 3;
 
     Rezults.push([r0, c0]);
+    //turn right
+    c0 += 1;
+    Rezults.push([r0, c0]);
+    //turn down
+    r0 += 1;
+    Rezults.push([r0, c0]);
 
-    for (let i = 0; i <= r; i++) {
-        arrayRow.push(i);
+    for (let i = 2; i <= steps; i += 2) {
+        //turn left
+        for (let j = 1; j <= i; j++) {
+            c0 -= 1;
+            Rezults.push([r0, c0]);
+        }
+        //turn up
+        for (let j = 1; j <= i; j++) {
+            r0 -= 1;
+            Rezults.push([r0, c0]);
+        }
+        //turn right
+        for (let j = 0; j <= i; j++) {
+            c0 += 1;
+            Rezults.push([r0, c0]);
+        }
+        //turn down
+        for (let j = 0; j <= i; j++) {
+            r0 += 1;
+            Rezults.push([r0, c0]);
+        }
     }
-    console.log(arrayRow);
-
-    for (let i = 0; i <= c; i++) {
-        arrayColomn.push(i);
-    }
-    console.log(arrayColomn);
-    console.log(Rezults);
-
-    for (let i = 2; i <= 2; i++){
-
-    }
+    let FilteredRezult = Rezults.filter(function (rezult) {
+        if ((rezult[0] >= 0 && rezult[0] < r) && (rezult[1] >= 0 && rezult[1] < c)) {
+            return true
+        }
+    });
+    console.log('Rezult', FilteredRezult);
 }
 
-MatrixCoordinats(8, 10, 6, 1);
+MatrixCoordinats(5, 5, 0, 3);
 
 
 
