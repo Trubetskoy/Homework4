@@ -22,18 +22,21 @@ console.log([65, 8, 2, 4, 1, 7, 456, 852, 'sdrthk'].myMap(function (item) {
 
 
 Array.prototype.mySort = function (func) {
-    array = this;
-    let temp;
-    for (let i = 0; i < this.length; i++) {
-        for (let j = 0; j < (this.length - i - 1); j++) {
-            if (this[j] > this[j + 1]) {
-                temp = this[j];
-                this[j] = this[j + 1];
-                this[j + 1] = temp;
-
-            }
-        }
-    }
+    let array = this;
+      for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < (array.length - i - 1); j++) {
+          if (func && func(array[j], array[j + 1]) > 0) {
+            let temp = array[j];
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+          else if (!func && array[j].toString()>array[j+1].toString()){
+            let temp = array[j];
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+      }
+    }   
     return array;
 };
 
